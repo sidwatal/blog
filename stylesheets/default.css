@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  width: 100%;
+  font-family:'Josefin Slab';
+}
+
+#header {
+  position: absolute;
+  width: 100%;
+  background-color: #ff9bbe;
+  float: top;
+  border-bottom: 3px solid #9bffa4;
+  margin-left: 0;
+}
+
+#current-page a {
+  font-size: 100px;
+  color: #9bffa4;
+  text-shadow: 10px 10px #b25b79;
+
+}
+
+#title {
+  float:left;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.sw {
+  font-size: 65px;
+  text-shadow: 5px 5px #9bffa4;
+}
+
+#subtitle {
+  font-size: 50px;
+  font-weight: normal;
+}
+
+#top-nav {
+  float: right;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+#top-nav td {
+  border-left: 3px solid #9bffa4;
+  border-right: 3px solid #9bffa4;
+  padding: 31px 10px;
+  }
+
+#main {
+  background-color: #b25b79;
+  min-height: 300px;
+}
+
+#main img {
+    height: 400px;
+    width: 400px;
+    display: block;
+    margin: auto;
+    padding-top: 200px;
+}
+
+#tandb {
+  font-size: 65px;
+  text-shadow: 5px 5px #9bffa4;
+  display: block;
+  text-align: center;
+}
+
+#sub-tandb {
+  text-align: center;
+  display: block;
+  font-style: italic;
+  font-size: 22px;
+  padding-bottom: 50px;
+}
+
+#footer {
+  width: 100%;
+  background-color: #ff9bbe;
+  border-top: 3px solid #9bffa4;
+  margin-left: 0;
+  height: 40px;
+  line-height: 40px;
+}
+
+#social {
+  border-bottom: 3px solid #9bffa4;
+  width: 100%;
+  background-color: #ff9bbe;
+}
+
+#social img {
+  display: block;
+  margin: 0 auto;
+}
+
+#disclaimer {
+  background-color: #ff9bbe;
+}
+
+#posts {
+  background-color: #b25b79;
+  width: 100%;
+  border: 0;
+  padding-top: 200px;
+  font-size: 40px;
+}
+
+#blog-list {
+  min-height: 500px;
+  background-color: #b25b79;
+}
