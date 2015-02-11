@@ -5,12 +5,10 @@ body {
 }
 
 #header {
-  position: absolute;
+  position: fixed;
   width: 100%;
   background-color: #ff9bbe;
-  float: top;
   border-bottom: 3px solid #9bffa4;
-  margin-left: 0;
 }
 
 #current-page a {
@@ -40,12 +38,12 @@ body {
   float: right;
   font-size: 50px;
   font-weight: bold;
+  width: auto;
 }
 
 #top-nav td {
   border-left: 3px solid #9bffa4;
   border-right: 3px solid #9bffa4;
-  padding: 31px 10px;
   }
 
 #main {
