@@ -1,108 +1,81 @@
-body {
+body{
   margin: 0;
+  padding: 0;
   width: 100%;
   font-family:'Josefin Slab';
 }
 
 #header {
-  position: fixed;
   width: 100%;
+  overflow: hidden;
   background-color: #ff9bbe;
-  border-bottom: 3px solid #9bffa4;
-}
-
-#current-page a {
-  font-size: 2.5em;
-  color: #9bffa4;
-  text-shadow: 10px 10px #b25b79;
-
 }
 
 #title {
-  float:left;
-  font-size: 50px;
+  float: left;
+  width: 30%;
+  margin: 10px 0;
+  font-size: 30px;
   font-weight: bold;
+  color: #b25b79
 }
 
-.sw {
-  font-size: 65px;
+#title span {
+  font-size: 45px;
   text-shadow: 5px 5px #9bffa4;
 }
 
-#subtitle {
-  font-size: 50px;
-  font-weight: normal;
-}
-
-#top-nav {
+#upper-nav {
   float: right;
-  font-size: 2em;
+  margin: 10px 0;
+  font-size: 60px;
   font-weight: bold;
-  width: auto;
+  width: 60%;
+  text-align: right;
 }
 
-#top-nav td {
-  border: 3px solid #9bffa4;
-  }
+a {
+  color: #b25b79;
+}
 
-#main {
+#content {
+  padding: 50px;
+  text-align: center;
   background-color: #b25b79;
-  min-height: 300px;
-  width: 100%;
+  font-size: 20px;
 }
 
-#main img {
-    height: 400px;
-    width: 400px;
-    display: block;
-    margin: auto;
-    padding-top: 215px;
+#content a {
+  color: #ff9bbe;
 }
 
 #tandb {
-  font-size: 65px;
-  text-shadow: 5px 5px #9bffa4;
-  display: block;
-  text-align: center;
-}
-
-#sub-tandb {
-  text-align: center;
-  display: block;
-  font-style: italic;
-  font-size: 22px;
-  padding-bottom: 50px;
+  font-size: 40px;
+  text-shadow: 2px 2px #9bffa4;
 }
 
 #footer {
-  width: 100%;
-  background-color: #ff9bbe;
-  border-top: 3px solid #9bffa4;
-  margin-left: 0;
-  height: 40px;
-  line-height: 40px;
-}
-
-#social {
-  border-bottom: 3px solid #9bffa4;
-  width: 100%;
+  padding: 50px;
   background-color: #ff9bbe;
 }
 
-#social img {
-  display: block;
-  margin: 0 auto;
+#content img {
+  width: 300px;
+  height: 300px;
 }
 
-#disclaimer {
-  background-color: #ff9bbe;
+td img {
+  height: 50px;
+  width: 50px;
 }
 
-#main-table {
-  position: relative;
-  top: 220px;
-  background-color: #b25b79;
-  width: 100%;
-  font-size: 40px;
-  border-bottom: 3px solid #9bffa4;
+table {
+  float: right;
+}
+
+td {
+}
+
+#current-page {
+  text-shadow: 5px 5px #9bffa4;
 }
