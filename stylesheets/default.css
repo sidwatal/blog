@@ -27,7 +27,7 @@ body{
 
 #upper-nav {
   float: right;
-  margin: 10px 0;
+  margin: 10px;
   font-size: 60px;
   font-weight: bold;
   width: 60%;
@@ -43,6 +43,7 @@ a {
   text-align: center;
   background-color: #b25b79;
   font-size: 20px;
+  height: 400px;
 }
 
 #content a {
