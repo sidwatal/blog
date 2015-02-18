@@ -17,10 +17,10 @@
       Variables are really important to Ruby. Obviously. They are probably the main way we manipulate data. But once your programs start becoming a little more complicated you realize that it is really hard to replicate the real world using just variables. As powerful as they are, variables can only hold one piece of data at a time. Great, if that is what you need. Not so great if what you are trying to manipulate or represent is a list of things like names of people in your Dev BootCamp cohort or items on a menu. You could try doing something like:
     </p>
     <blockquote>
-      person1 = "Sid"<br>
-      person2 = "Nancy"<br>
-      person3 = "John"<br>
-      person4 = "Mary"<br>
+      person1 = "Sid"<br />
+      person2 = "Nancy"<br />
+      person3 = "John"<br />
+      person4 = "Mary"<br />
     </blockquote>
     <p>
       Not that bad if your cohort just has 4 people in it. But even at this point you can see how much redundancy we are generating in our code. The code for each line is almost the same with the exception of the name itself. This is where arrays come in. An array would allow you to add all of the names into a single array variable. So your above code would look like:
@@ -35,36 +35,36 @@
       You will need to keep a couple of things in mind when dealing with arrays. First, the length of the array is the amount of elements in that array. So:
     </p>
     <blockquote>
-      puts people.length <br>
-      ---------- <br>
+      puts people.length <br />
+      ---------- <br />
       4
     </blockquote>
     <p>
       Second, the <em>index</em> or position of the first element in the array is [0]. And the index of the last element, "Mary", in our example people array is 3. This may not seem intuitive at first but it is something you will get used to(or so I'm told. Saying something is in the <em>zero-th</em> position just doesn't flow off my tongue ... yet). In our Ruby code this will look like
     </p>
     <blockquote>
-      puts people[0] <br>
-      puts people[1] <br>
-      puts people[2] <br>
-      puts people[3] <br>
-      ---------- <br>
-      Sid <br>
-      Nancy <br>
-      John <br>
-      Mary <br>
+      puts people[0] <br />
+      puts people[1] <br />
+      puts people[2] <br />
+      puts people[3] <br />
+      ---------- <br />
+      Sid <br />
+      Nancy <br />
+      John <br />
+      Mary <br />
     </blockquote>
     <p>
       The length method is just one array method. You can read all the different methods in the <a href="http://ruby-doc.org//core-2.2.0/Array.html">Ruby Docs</a>. If you look at the above code example you will see the return of our mortal enemy, code repetition. The 4 lines of our ruby program are like 80 percent repetition. Again, how annoying would this be if there were many more people in your DBC cohort and all you wanted to do was to print their name to the screen. This brings us to the <em>each</em> method. The each method allows us to iterate over each(see how intuitive Ruby is) element of our array and run it through a block of code. It'll make more sense with the following example.
     </p>
     <blockquote>
-      people.each do |person|<br>
-      &nbsp;&nbsp;puts person<br>
-      end<br>
-      ---------- <br>
-      Sid <br>
-      Nancy <br>
-      John <br>
-      Mary <br>
+      people.each do |person|<br />
+      &nbsp;&nbsp;puts person<br />
+      end<br />
+      ---------- <br />
+      Sid <br />
+      Nancy <br />
+      John <br />
+      Mary <br />
     </blockquote>
     <p>
       Lets take each part of our program and see what it does
@@ -82,22 +82,22 @@
       Arrays are great if all you want is a list of elements but what if you wanted to do something a little more complicated like classify the people in your cohort by which city they are going to attend for the DBC On-site. For this we can use a hash. A hash is very similar to an array but where an array is indexed by a number(say it 5 times, starting at the 0-th element), a hash is organized using a system called a key-value pair. So a hash of a DBC cohort could look like:
     </p>
     <blockquote>
-      my_dbc_hash = {<br>
-        "Sid" => "New York City",<br>
-        "Nancy" => "Chicago",<br>
-        "John" => "San Fransisco",<br>
-        "Mary" => "San Fransisco"<br>
+      my_dbc_hash = {<br />
+        "Sid" => "New York City",<br />
+        "Nancy" => "Chicago",<br />
+        "John" => "San Fransisco",<br />
+        "Mary" => "San Fransisco"<br />
     }
     </blockquote>
     <p>
       What I have done here is created a hash called my_dbc_hash. Each element has 2 parts to it. The part to the left of the => is called the key. All keys in your hash have to be unique. That makes sense, doesn't it? In our example it isn't really possible for anyone to take the DBC On-site portion in multiple cities. The part to the right of the => is called the value. Multiple keys can have the same value. Still makes sense in our example. Just remember that whereas in arrays you would call elements by their index(people[0]) in hashes you call elements by their key(my_dbc_hash["Sid"]). I'm sure you can figure lots of ways to use hashes that make sense for your programs.
     </p>
     <blockquote>
-      best_beers = {<br>
-      "Dogfish Head 90 Minute" => "IPA",<br>
-      "Guinness" => "Stout",<br>
-      "Lagunitas" => "IPA",<br>
-      "Newcastle" => "Brown Ale"<br>
+      best_beers = {<br />
+      "Dogfish Head 90 Minute" => "IPA",<br />
+      "Guinness" => "Stout",<br />
+      "Lagunitas" => "IPA",<br />
+      "Newcastle" => "Brown Ale"<br />
     }
     </blockquote>
     <p>
