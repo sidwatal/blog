@@ -1,0 +1,17 @@
+#content {
+  border: 2px solid #CCCCCC;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  overflow: auto;
+}
+
+img {
+  margin: 5px;
+  float: left;
+  padding: 5px;
+}
+
+h1 {
+  font-family: cursive;
+}
+
