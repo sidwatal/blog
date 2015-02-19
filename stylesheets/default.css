@@ -80,3 +80,14 @@ td {
 #current-page {
   text-shadow: 5px 5px #9bffa4;
 }
+
+#post-list{
+  padding: 50px;
+  background-color: #b25b79;
+  font-size: 20px;
+  height: 60vh;
+}
+
+#post-list a {
+  color: #ff9bbe;
+}
