@@ -2,6 +2,7 @@ section {
   border: 2px solid #cccccc;
   margin: 45px 120px;
   padding: 10px 20px;
+  overflow: auto;
 }
 
 img {
