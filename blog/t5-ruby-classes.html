@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+  <title>Pen.new</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+</head>
+
+<main>
+  <div>
+  <h1>Ruby Classes in the Real World</h1>
+  <h2>How to create a pen</h2>
+  <h4>February 3, 2015</h4>
+  </div>
+
+  <section>
+    <p>
+      The first thing most people talk about when they talk about Ruby is the fact that it is an object oriented programming(OOP) language. This means that the main driving force behind Ruby as a language are the *nouns* you create and manipulate. A lot of these nouns or Objects are provided to you. These standard objects are things you are already familiar with. These are the strings, integers, floats, etc we have been using pretty regularly now. The real power of the language comes with our ability to create our own classes of objects. This allows us to create our own types of nouns and give them the ability to do things.
+    </p>
+    <p>
+      Say we wanted to write a program that creates pens and allows us to manipulate them in certain ways. Ruby makes this super easy:
+    </p>
+    <blockquote class="code">
+      class Pen<br />
+      <br>
+      end <br>
+    </blockquote>
+    <p>
+      Really simple but that doesn't really help us. We have a pen but it has no attributes and can't do anything. For this to happen we first need the ability to create a new object in this class and we do this with an initialize method. We can write this method with as many parameters as we like and the attributes of our new pen with these parameters.
+    </p>
+    <blockquote class="code">
+      class Pen<br />
+        &nbsp;&nbsp;def initialize(color, nib, grip, ink_level) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@color = color <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@nib = nib <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@grip = grip <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@ink_level = ink_level <br>
+        &nbsp;&nbsp;end <br>
+      end <br>
+      ------------------ <br>
+      pilot_g2 = Pen.new("blue", "fine", "rubber", "full") <br>
+    </blockquote>
+    <p>
+      Now we have a pen with some attributes. We passed 4 parameters to the initialize or new method. These were strings with the words blue, fine, rubber, and full. The initialize method took these parameters and set them as the attributes of our pen using instance variables. We need instance variables when we do this because if we used local variables we would not be able to call them when we define other methods for our class due to their narrow scope.
+    </p>
+    <p>
+      Now we have blue pen, with a fine nib, a rubber grip, and full ink. The first thing we will want to do is able to read all these attributes once we have assigned them. We can start with the color attribute. Let's write a color method that outputs the value of the color attribute.
+    </p>
+    <blockquote class="code">
+      class Pen<br />
+        &nbsp;&nbsp;def initialize(color, nib, grip, ink_level) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@color = color <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@nib = nib <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@grip = grip <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@ink_level = ink_level <br>
+        &nbsp;&nbsp;end <br>
+        <br>
+        &nbsp;&nbsp;def color <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@color<br>
+        &nbsp;&nbsp;end <br>
+      end <br>
+      ------------------ <br>
+      pilot_g2 = Pen.new("blue", "fine", "rubber", "full") <br>
+      p pilot_g2.color    # => blue
+    </blockquote>
+    <p>
+      Great now we can see what color our pen is. But notice something. If we were to write methods that read each attribute we would have a lot of annoyingly repetitive code to write. Ruby gives us a shortcut. This is the attr_reader method. If we just tell the attr_reader what attributes we want read by passing the variable as a symbol we can have ruby do all the heavy(okay ... pretty light, but still) lifting for us.
+      So the above code can be re-written to have read methods for each instance variable like this:
+    </p>
+    <blockquote class="code">
+      class Pen<br />
+        &nbsp;&nbsp; attr_reader :color, :nib, :grip, :ink_level
+        &nbsp;&nbsp;def initialize(color, nib, grip, ink_level) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@color = color <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@nib = nib <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@grip = grip <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@ink_level = ink_level <br>
+        &nbsp;&nbsp;end <br>
+      end <br>
+      ------------------ <br>
+      pilot_g2 = Pen.new("blue", "fine", "rubber", "full") <br>
+      puts pilot_g2.color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# => blue <br>
+      puts pilot_g2.nib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# => fine <br>
+      puts pilot_g2.grip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# => rubber <br>
+      puts pilot_g2.ink_level&nbsp;&nbsp;  # => full
+    </blockquote>
+    <p>
+      The ability to write these attributes to instances of our Pen class can be added just as easily using the attr_writer method. If you have any variables you want to both read and write, you can use the attr_accessor method.
+    </p>
+    <p>
+      This is fun and all but our pen really doesn't do anything yet. What is the point(get it?) of a pen that doesn't write? So let's give our pen a write method.
+    </p>
+    <blockquote class="code">
+      class Pen<br />
+        &nbsp;&nbsp;attr_reader :color, :nib, :grip, :ink_level <br>
+        &nbsp;&nbsp;def initialize(color, nib, grip, ink_level) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@color = color <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@nib = nib <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@grip = grip <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@ink_level = ink_level <br>
+        &nbsp;&nbsp;end <br>
+        <br>
+        &nbsp;&nbsp;def write <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;puts "Writing with #{@color} ink is great. Hope I don't run out."<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;@ink_level = "empty" <br>
+        &nbsp;&nbsp;end <br>
+      end <br>
+      ------------------ <br>
+      pilot_g2 = Pen.new("blue", "fine", "rubber", "full") <br>
+      puts pilot_g2.ink_level&nbsp;&nbsp;&nbsp;&nbsp;# => full <br>
+      pilot_g2.write&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# => Writing with blue ink is great. Hope I don't run out. <br>
+      puts pilot_g2.ink_level&nbsp;&nbsp;&nbsp;&nbsp;# => empty <br>
+    </blockquote>
+    <p>
+      Now our pen writes with the right color ink and even runs out of ink. That's more like the pens we know. So there you have pens. That is the power of OOP languages like Ruby. We can mirror real life objects very closely using attributes and methods. Have fun with it.
+    </p>
+  </section>
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'sidwatal'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</main>
