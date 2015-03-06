@@ -18,12 +18,33 @@ h4 {
   font-style: italic;
 }
 
-script .code {
+.code {
   font-family: "Courier New";
   font-weight: bold;
   background-color: #cccccc;
+  width: 70%;
+  margin: 0 auto;
   border: 2px solid #000000;
-  margin: 0;
-  padding: 0;
+  border-left: 15px solid #000000;
+  padding-left: 20px;
 }
 
+li {
+  margin: 5px;
+}
+
+td {
+  border: 1px solid #000000;
+  padding: 7px;
+  text-align: center;
+}
+
+table {
+  border: 1px solid #000000;
+  margin: 0 auto;
+}
+
+th {
+  border: 1px solid #000000;
+  padding: 5px;
+}
