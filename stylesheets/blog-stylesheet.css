@@ -23,5 +23,6 @@ script .code {
   font-weight: bold;
   background-color: #cccccc;
   border: 2px solid #000000;
+  margin: 0;
 }
 
