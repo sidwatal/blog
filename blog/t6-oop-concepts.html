@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<head>
+  <title>Blocs, Procs, &amp; Lambdas</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+</head>
+
+<main>
+  <div>
+  <h1>Everything in Ruby is an Object</h1>
+  <h2>Unless it isn't ... Unless it is</h2>
+  <h4>March 12, 2015</h4>
+  </div>
+
+  <section>
+    <p>
+      One of the statements that keeps coming up while learning Ruby is that "Everything is an object". All the nouns we work with in ruby(strings, integers, arrays, etc.) are objects. Even the verbs or methods we work with are objects. Every instance of a user generated class we work with is an object. <strong><em>EVERYTHING IS AN OBJECT</strong></em>. Well guess what.
+    </p>
+    <p>
+      <h3 class = "center"><del>EVERTHING IS AN OBJECT</del></h3>
+    </p>
+    <p>
+      Everything is not an object. We have actually already been working pretty heavily with one part of ruby that isn't an object. That is the code block. In Ruby a block is something that is either wrapped in {curly braces}(for blocks that are all on one line) or do..end(for multi line blocks). These are not objects but rather part of the syntax of the method calls they are associated with.
+    </p>
+    <blockquote class="code">
+      nums = (1..10).to_a <br>
+      nums.each { |num| p num * 2 } <br>
+      ---------- <br>
+      2 <br>
+      4 <br>
+      6 <br>
+      8 <br>
+      10 <br>
+      12 <br>
+      14 <br>
+      16 <br>
+      18 <br>
+      20 <br>
+    </blockquote>
+    <p>
+      For the each method above we are passing it a code block that multiplies each number of the array and multiplies it by 2. To re-iterate, the block isn't an object but a part of the syntax of the method call for each. You can even write your own methods that use code blocks and to this you need to write a method that yields and passes a parameter to a block.
+    </p>
+    <blockquote class="code">
+      def multiply_by_2(x) <br>
+      &nbsp;&nbsp;if x > 10 <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;yield(x) <br>
+      &nbsp;&nbsp;else <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;puts "Try a number higher than 10" <br>
+      &nbsp;&nbsp;end <br>
+      end <br>
+      <br>
+      multiply_by_2(1) {|x| p x * 2} <br>
+      multiply_by_2(11) {|x| p x * 2} <br>
+      ---------- <br>
+      Try a number higher than 10 <br>
+      22 <br>
+    </blockquote>
+    <p>
+      We can see in the above example that our multiply_by_2 function is being defined with a parameter x. If x is higher than 10 the function yields to a code block and if its not then it puts out a statement. When we call the function passing it a 1 it just puts out the statement even though there is a code block because it has no way of yielding to the block. On our second call with the number 11 we see that the function yields to the block and passes 11 to it so the block does what it needs to the number and outputs 22.
+    </p>
+    <p>
+      This wouldn't be Ruby though if that was just the end of it. If you have a program where the same code block is being called repeatedly then having no way to save a block as an object would create code that isn't very DRY. Take the following code as an example:
+    </p>
+    <blockquote class="code">
+      (1..10).each { |num| p num * 2 } <br>
+      (11..20).each { |num| p num * 2 } <br>
+      (21..30).each { |num| p num * 2 } <br>
+    </blockquote>
+    <p>
+      This is a pretty contrived example but it serves a point. The { |num| p num * 2 } code block is being called 3 times and is just taking up space by being repeated unnecessarily. I say unnecessarily because Ruby has something called a proc that will DRY this code right up. A proc is basically a code block that can be saved in a variable and called as needed. Lets rewrite the above code using a proc.
+    </p>
+    <blockquote class="code">
+      times_2 = proc { |num| p num * 2 } <br>
+      <br>
+      (1..10).each(&amp;times_2) <br>
+      (11..20).each(&amp;times_2) <br>
+      (21..30).each(&amp;times_2) <br>
+    </blockquote>
+    <p>
+      The 2 previous code examples do the same exact thing. The second one just does it without repeating the same code block 3 times. A simpler example to prove a point:
+    </p>
+    <blockquote class="code">
+      say_hi = proc { puts "Hello"} <br>
+      say_hi.call <br>
+      ---------- <br>
+      Hello <br>
+    </blockquote>
+    <p>
+      As you can see procs can be called using the call method on them. This brings us to a close cousin of the proc, the lambda. Lambdas are very similar to procs with a few differences that I will discuss further down. But you can see how similar a proc and a lambda is with the following example.
+    </p>
+    <blockquote class="code">
+      lambda_hi = lambda { puts "Hello"} <br>
+      lambda_hi.call <br>
+      ---------- <br>
+      Hello
+    </blockquote>
+    <p>
+      See, almost exactly the same. The difference start coming in once we start adding some complexity to our procs and lambdas. Say I want to create block that greets a person who's name I pass to my proc or lambda.
+    </p>
+    <blockquote class="code">
+      say_hi = proc { |person| "Hi #{person}"} <br>
+      lambda_hi = lambda { |person| "Hi #{person}"} <br>
+      <br>
+      say_hi.call("Sid") <br>
+      lambda_hi.call("Sid") <br>
+      say_hi.call("Sid","Violet") <br>
+      lambda_hi.call("Sid","Violet") <br>
+      ---------- <br>
+      Hi Sid <br>
+      Hi Sid <br>
+      Hi Sid <br>
+      ERROR ERROR ERROR ERROR(<em>NOTE: Not the actual error message you see</em>) <br>
+    </blockquote>
+    <p>
+      Notice that when just one argument is being passed both the proc and lambda function identically. When you pass more arguments than the proc is expecting it just throws away the extra argument. The lambda on the other hand gets confused and throws a tantrum.
+    </p>
+    <p>
+      A second and much more subtle(<em>as in so subtle, I might not even know what I am talking about so tread carefully beyond this point</em>) difference between the two is how they function inside methods.
+    </p>
+    <blockquote class="code">
+      def lambda_method <br>
+      &nbsp;&nbsp;lambada = lambda do <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;puts "The forbidden dance" <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;return <br>
+      &nbsp;&nbsp;end <br>
+      &nbsp;&nbsp;lambada.call <br>
+      &nbsp;&nbsp;puts "CALIENTE!!!!" <br>
+      end <br>
+      <br>
+      lambda_method <br>
+      ---------- <br>
+      The forbidden dance <br>
+      CALIENTE!!!! <br>
+    </blockquote>
+    <br>
+    <blockquote class="code">
+      def proc_method <br>
+      &nbsp;&nbsp;bacon = lambda do <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;puts "The forbidden snack" <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;return <br>
+      &nbsp;&nbsp;end <br>
+      &nbsp;&nbsp;bacon.call <br>
+      &nbsp;&nbsp;puts "YUMMY!!!!" <br>
+      end <br>
+      <br>
+      proc_method <br>
+      ---------- <br>
+      The forbidden snack <br>
+    </blockquote>
+    <p>
+      As you can see, when the lambda in the lambda_method returns to the method it returns control over to the method. In contrast, when the proc inside the proc_method ended its execution, it terminated the execution of the entire containing method. The proc acts like its return is a return for the entire method and thus ends its execution.
+    </p>
+  </section>
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'sidwatal'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</main>
