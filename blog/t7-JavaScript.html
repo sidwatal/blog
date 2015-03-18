@@ -14,15 +14,42 @@
 
   <section>
     <p>
-      Ruby was created to maximize developer happiness. Ruby is readable. Ruby makes sense. Ruby is all things to all people. Ruby is love. Ruby is life. JavaScript not so much. I'm not sure if you can tell by this point but I have been having a lot trouble this week with JavaScript. Just two of my tweets this week:
+      Ruby was created to maximize developer happiness. Ruby is readable. Ruby makes sense. Ruby is all things to all people. Ruby is love. Ruby is life. JavaScript not so much. I'm not sure if you can tell by this point but I have been having a lot trouble this week with JavaScript.
     </p>
     <blockquote class="twitter-tweet" lang="en"><p>“If you can’t handle me at my JavaScript, then you don’t deserve me at my Ruby.”&#10;&#10;- Marilyn Monroe</p>&mdash; Sid (@butterandguns) <a href="https://twitter.com/butterandguns/status/577885839285481473">March 17, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <p>
+      It is not that something is inherently wrong with JavaScript(although there might be. Who knows?). It's just that having Ruby be your intro to the programming universe sort of spoils you for other things. The syntax is just one of the things that is so great about Ruby.
+    </p>
+    <p>
+      Let me start by saying I love the Ruby documentation. Some of the detailed descriptions get a little complicated but overall I find them easy to search and navigate. The <a href="https://chrome.google.com/webstore/detail/rubydoc-search/lhaebcbddhgblebbgogeikhnecldoigd/reviews?hl=en-US">RDoc Chrome Extension</a> also makes things super easy by letting you search the Ruby Docs from any page. JavaScript has documentation is just about the best thing I can say about the JavScript documentation. I am sure that for people that are experts with JS the documentation makes perfect sense but as someone just getting started I find them very difficult to navigate. If I know the method to search for the descriptions are helpful but if I am trying to figure out what method to use it is hard to really pin any down.
+    </p>
     <blockquote class="twitter-tweet" lang="en"><p>As the light leaves my eyes they ask “Who did this to you”&#10;I point a weak hand to my laptop and with my dying breath say “<a href="https://twitter.com/hashtag/Javascript?src=hash">#Javascript</a>”&#10;-Fin</p>&mdash; Sid (@butterandguns) <a href="https://twitter.com/butterandguns/status/578007223739232256">March 18, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <p>
-      It is not that something is inherently wrong with JavaScript(although there might be. Who knows?). It's just that having Ruby be your intro to the programming universe
+      One huge similarity between the two(and for this I am immensely grateful) are that they both have arrays that function very similarly and where Ruby has hashes, JavaScript has objects. Ruby arrays and JavaScript arrays are constructed almost identically. They both start at index[0] and they both can hold different data types. This makes creating and storing data in them super easy and convenient and I for one have never met any data I haven't immediately stored in an array.
     </p>
+    <p>
+      The same(almost the same) can be said about Ruby hashes and JavaScript objects. Like a hash in Ruby, a JS object is a data structure where the elements are paired in a key/value system. The syntax of creating them with curly braces is also identical.
+    </p>
+    <p>
+      Where Ruby and JS differ when it comes to data structures is on the methods that can be called on them. While Ruby has all sorts of iterators and enumerables that can be called on arrays and hashes, in JS you are basically limited to the two types of loops(for and while). This makes things a little bit complicated but not impossible. Custom functions can be written using these two loops to basically do anything that the Ruby iterators and enumerables like each and map can do. Here is an example of what the map function would look like if you wrote it in JavaScript:
+    </p>
+    <blockquote class="code">
+      function map(array, func) { <br>
+      var newArray = []; <br>
+      <br>
+      for (var i=0; i < array.length; i++) { <br>
+      newArray.push(func(array[i])); <br>
+      } <br>
+      <br>
+      return newArray; <br>
+      }; <br>
+    </blockquote>
+    <p>
+      As you can see, with just a few lines of code we have created the map method and can pass any array and code block to it. Keeping these pieces of code in your back pocket will be a great help for writing code in the future.
+    </p>
+
   </section>
   <div id="disqus_thread"></div>
     <script type="text/javascript">
