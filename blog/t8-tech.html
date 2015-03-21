@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+  <title>Big O Notation</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+</head>
+
+<main>
+  <div>
+  <h1>Big O Notation</h1>
+  <h2>And What it Means for Different Algorithms</h2>
+  <h4>March 21, 2015</h4>
+  </div>
+
+  <section>
+    <p>
+      As web developers we will be constantly working with very large data sets. In order to really work with and manipulate all the data these sets will provide we will really have to get our hands dirty with algorithms. "ALGORITHMS" you say as you slowly back away. "THEY SAID THERE WASN'T GOING TO BE ANY MATH". Calm down. An algorithm really isn't as scary as it sounds. An algorithm is any set of instructions you perform on an input to get an output. That awesome recipe you have is just an algorithm that takes spinach, artichokes, and cheese and turns it into an amazing spinach-artichoke dip. See, algorithms aren't so scary and can actually be delicious.
+    </p>
+    <p>
+      Now if all the data you had were just arrays with a few elements, algorithm speeds wouldn't matter. Modern computer hardware and software is fast enough that it can parse and manipulate small data sets almost instantaneously. But once we start getting into large sets like medical records at an insurance company or the United States Census data algorithm speeds start to matter. This leads to the next question, how do you actually measure algorithm speed? You can't just measure it in miliseconds or seconds because that depends a lot on the actual machine and software running the algorithm. Your computer will not be able to run the algorithm at the same speed as a network of super-computers at Google. So scientists use something called Big <em>O</em> notation.
+    </p>
+    <p>
+      Big <em>O</em> notation doesn't actually care what the length of time an algorithm takes, also known as the runtime of the algorithm, actually is. It only cares how the runtime increases as the size of the input increases towards infinity. Or put simply, how much faster is the runtime for a 10 element array versus a 1,000 element array or a 1,000,000 element array and so on. The simplest example of this is an algorithm whose runtime remains constant no matter what the size of the array is. Say I didn't really care what was in my array and just wanted to see what the element at the first index of the array is. It doesn't matter if the array has 10 or a billion elements, looking up array[0] will still take the same amount of time. This "algorithm"(if you can call it that) is said to said do have a Big <em>O</em> of 1. This is written more simply as <em>O</em>(1). <br>
+      (Remember, the 1 does not represent the actual time the algorithm takes just that it is a constant amount of time. All constant time algorithms are said to have <em>O</em>(1))
+    </p>
+    <p>
+      Algorithms whose runtimes increase linearly with the length of the input are said to have <em>O</em>(n). This means that the runtime is proportional to the length of the input. Using an <em>O</em>(n) algorithm on an array with 1,000 elements will take 10 times as long as using it on an array with 100 elements. An algorithm to take the sum of all the elements in an array is an example of this type. No matter how long the array is in order to add all the elements of the array you must iterate through them. Again, the actual time it takes per-element doesn't matter, just that the runtime goes up proportionally to the length of the array.
+    </p>
+    <p>
+      Other common Big <em>O</em>'s are <em>O</em>(n<sup>2</sup>) for sorting algorithms like bubble sort and quick sort and <em>O</em>(log n) for binary search. There are also many other algorithmic complexities and a graph of all the ones we've discussed here and a few others can be seen below.
+    </p>
+    <p>
+      <img src="assets/bigo.png" alt="">
+    </p>
+    <p>
+      Next week I will discuss a few sorting algorithms, how they work, and why they have the Big <em>O</em> complexity that they do.
+    </p>
+  </section>
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'sidwatal'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</main>
